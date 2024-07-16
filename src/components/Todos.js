@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useSelector,useDispatch } from 'react-redux';
 import { Icon } from 'react-icons-kit';
 import {trash} from 'react-icons-kit/feather/trash'
@@ -12,6 +12,12 @@ export const Todos = ({handleEditClick, editFormVisibility}) => {
 
   // Get the list of todos from the Redux store
   const todos = useSelector((state)=>state.operationsReducer);
+  
+// Save todos to local storage on state change
+useEffect(() => {
+  localStorage.setItem('todos', JSON.stringify(todos));
+}, [todos]);
+
   return todos.map((todo)=>(
     <div key={todo.id} className='todo-box'>
         <div className='content'>
@@ -38,3 +44,5 @@ export const Todos = ({handleEditClick, editFormVisibility}) => {
     </div>
   ))
 }
+
+

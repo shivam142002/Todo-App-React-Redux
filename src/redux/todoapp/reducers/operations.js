@@ -3,9 +3,9 @@ import { ADD_TODO, DELETE_ALL ,REMOVE_TODO,UPDATE_TODO,UPDATE_CHECKBOX} from "..
 
 // Initial state of the todos
 const initialState=[
-    {id: 1, todo: 'Buy Laptop', completed: false},
-    {id: 2, todo: 'Master Redux', completed: false},
-    {id: 3, todo: 'Watering Plants', completed: true},
+    {id: 1, todo: 'MasterReact', completed: false},
+    {id: 2, todo: 'Learn components', completed: false},
+    {id: 3, todo: 'Master Redux', completed: true},
 ];
 
 
@@ -25,7 +25,7 @@ export const operationsReducer=(state=initialState, action)=>{
             const filteredTodos = state.filter((todo)=>todo.id!==action.payload);
             return filteredTodos;
 
-          // Update a specific todo   
+       //   Update a specific todo   
             case UPDATE_TODO:
                 let data = action.payload;
                 const updatedArray=[];
@@ -39,7 +39,7 @@ export const operationsReducer=(state=initialState, action)=>{
                 })
                 return updatedArray;
 
-         // Toggle the completed state of a specific todo       
+     //    Toggle the completed state of a specific todo       
           case UPDATE_CHECKBOX: 
           let todoArray=[];
           state.map((item)=>{
@@ -53,4 +53,4 @@ export const operationsReducer=(state=initialState, action)=>{
     // Return the current state by default  
         default: return state;
     }
-}
+};
